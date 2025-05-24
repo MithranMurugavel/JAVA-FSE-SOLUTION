@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Event Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Section -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#registration">Register</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="help.html" target="_blank">Help</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home">
+            <!-- Welcome Banner with unique styling -->
+            <div id="welcomeBanner">
+                <h1>Welcome to Community Event Portal</h1>
+                <p>Connect with your community and discover amazing local events!</p>
+                <span style="color: red; font-weight: bold; font-size: 1.2em;">
+                    Special Offer: Register for 3 events and get 20% off!
+                </span>
+            </div>
+            
+            <div class="highlight">
+                <p>Join thousands of residents already participating in community activities.</p>
+            </div>
+        </section>
+
+       
+        <!-- Image Gallery Section -->
+        <section id="gallery">
+            <h2>Past Events Gallery</h2>
+            <p>Take a look at some memorable moments from our previous community events.</p>
+            
+            <table class="event-gallery">
+                <tr>
+                    <td>
+                        <img src="img1.jpg" alt="Summer Festival 2024" title="Summer Festival 2024" class="gallery-image">
+                        <div><strong>Summer Festival 2024</strong><br>Amazing turnout with live music and food trucks</div>
+                    </td>
+                    <td>
+                        <img src="img2.jpg" alt="Community Cleanup" title="Community Cleanup 2024" class="gallery-image" >
+                        <div><strong>Community Cleanup</strong><br>Volunteers came together to beautify our parks</div>
+                    </td>
+                   
+                </tr>
+            </table>
+        </section>
+
+        <!-- Event Registration Form Section -->
+        <section id="registration">
+            <h2>Event Registration</h2>
+            <p>Fill out the form below to register for upcoming community events.</p>
+            
+            <form class="registration-form" >
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required autofocus>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" >
+                    <div id="phoneError" class="error-message" style="display: none;"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventDate">Preferred Event Date:</label>
+                    <input type="date" id="eventDate" name="eventDate" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="eventType">Event Type:</label>
+                    <select id="eventType" name="eventType"  required>
+                        <option value="">Select an event type</option>
+                        <option value="festival" data-fee="25">Summer Festival ($25)</option>
+                        <option value="cleanup" data-fee="0">Community Cleanup (Free)</option>
+                        <option value="business" data-fee="15">Business Fair ($15)</option>
+                        <option value="charity" data-fee="30">Charity Run ($30)</option>
+                        <option value="art" data-fee="10">Art Exhibition ($10)</option>
+                    </select>
+                    <div id="eventFee" class="event-fee" style="display: none;"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Message:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about any special requirements or questions..." onkeyup="countCharacters(this)" onkeydown="countCharacters(this)"></textarea>
+                    <div id="charCounter" class="char-counter">0 / 500 characters</div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Register for Event</button>
+                <button type="button" class="btn btn-secondary" >Clear Preferences</button>
+                
+                <output id="formOutput" style="display: none;"></output>
+            </form>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback">
+            <h2>Event Feedback</h2>
+            <p>We value your feedback! Help us improve our community events.</p>
+            
+            <form class="registration-form">
+                <div class="form-group">
+                    <label for="attendedEvent">Event Attended:</label>
+                    <select id="attendedEvent" name="attendedEvent">
+                        <option value="">Select an event</option>
+                        <option value="summer2024">Summer Festival 2024</option>
+                        <option value="cleanup2024">Community Cleanup 2024</option>
+                        <option value="holiday2024">Holiday Market 2024</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rating">Event Rating:</label>
+                    <select id="rating" name="rating">
+                        <option value="">Rate the event</option>
+                        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                        <option value="4">⭐⭐⭐⭐ Good</option>
+                        <option value="3">⭐⭐⭐ Average</option>
+                        <option value="2">⭐⭐ Below Average</option>
+                        <option value="1">⭐ Poor</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedbackText">Your Feedback:</label>
+                    <textarea id="feedbackText" name="feedbackText" rows="5" placeholder="Share your thoughts about the event..." onkeyup="countFeedbackCharacters(this)"></textarea>
+                    <div id="feedbackCharCounter" class="char-counter">0 / 1000 characters</div>
+                </div>
+                
+                <button type="button" class="btn btn-primary">Submit Feedback</button>
+            </form>
+        </section>
+
+        <!-- Video Section -->
+        <section id="video">
+            <h2>Community Event Highlights</h2>
+            <p>Watch our latest community event highlights!</p>
+            
+            <video controls preload="metadata" >
+                <source src="/api/placeholder/video.mp4" type="video/mp4">
+                <source src="/api/placeholder/video.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+            
+            <div id="videoStatus" class="video-status">
+                Video is ready to play!
+            </div>
+        </section>
+
+        <!-- Geolocation Section -->
+        <section id="location">
+            <h2>Find Nearby Events</h2>
+            <p>Discover events happening near your location.</p>
+            
+            <button class="btn btn-primary" >Find Nearby Events</button>
+            
+            <div id="locationInfo" class="location-info" style="display: none;">
+                <h3>Your Location</h3>
+                <p id="coordinates"></p>
+                <p id="nearestEvent"></p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3>Get in Touch</h3>
+                    <p><strong>Address:</strong><br>123 Community Center Drive<br>Hometown, ST 12345</p>
+                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Email:</strong> info@communityportal.com</p>
+                    <p><strong>Office Hours:</strong><br>Monday - Friday: 9:00 AM - 5:00 PM<br>Saturday: 10:00 AM - 2:00 PM</p>
+                </div>
+                <div>
+                    <h3>Follow Us</h3>
+                    <p>Stay connected with our community on social media:</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 0.5rem 0;">📘 Facebook: @CommunityEvents</li>
+                        <li style="margin: 0.5rem 0;">🐦 Twitter: @CommunityPortal</li>
+                        <li style="margin: 0.5rem 0;">📷 Instagram: @CommunityLife</li>
+                        <li style="margin: 0.5rem 0;">📧 Newsletter: Sign up for weekly updates</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" >&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Community Event Portal. All rights reserved.</p>
+            <p>Building stronger communities through shared experiences.</p>
+        </div>
+    </footer>
+<script src="script.js"></script>
+   
+</body>
+</html>
+                        
+                
