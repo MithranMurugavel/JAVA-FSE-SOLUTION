@@ -49,11 +49,11 @@
             <table class="event-gallery">
                 <tr>
                     <td>
-                        <img src="img1.jpg" alt="Summer Festival 2024" title="Summer Festival 2024" class="gallery-image">
+                        <img src="img1.jpg" alt="Summer Festival 2024" title="Summer Festival 2024" class="gallery-image" ondblclick="enlargeImage(this)">
                         <div><strong>Summer Festival 2024</strong><br>Amazing turnout with live music and food trucks</div>
                     </td>
                     <td>
-                        <img src="img2.jpg" alt="Community Cleanup" title="Community Cleanup 2024" class="gallery-image" >
+                        <img src="img2.jpg" alt="Community Cleanup" title="Community Cleanup 2024" class="gallery-image" ondblclick="enlargeImage(this)">
                         <div><strong>Community Cleanup</strong><br>Volunteers came together to beautify our parks</div>
                     </td>
                    
@@ -66,7 +66,7 @@
             <h2>Event Registration</h2>
             <p>Fill out the form below to register for upcoming community events.</p>
             
-            <form class="registration-form" >
+            <form class="registration-form" onsubmit="submitForm(event)">
                 <div class="form-group">
                     <label for="fullName">Full Name:</label>
                     <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required autofocus>
@@ -79,7 +79,7 @@
                 
                 <div class="form-group">
                     <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" >
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" onblur="validatePhone(this)">
                     <div id="phoneError" class="error-message" style="display: none;"></div>
                 </div>
                 
@@ -90,7 +90,7 @@
                 
                 <div class="form-group">
                     <label for="eventType">Event Type:</label>
-                    <select id="eventType" name="eventType"  required>
+                    <select id="eventType" name="eventType" onchange="showEventFee(this)" required>
                         <option value="">Select an event type</option>
                         <option value="festival" data-fee="25">Summer Festival ($25)</option>
                         <option value="cleanup" data-fee="0">Community Cleanup (Free)</option>
@@ -107,8 +107,8 @@
                     <div id="charCounter" class="char-counter">0 / 500 characters</div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Register for Event</button>
-                <button type="button" class="btn btn-secondary" >Clear Preferences</button>
+                <button type="submit" class="btn btn-primary" onclick="showConfirmation()">Register for Event</button>
+                <button type="button" class="btn btn-secondary" onclick="clearPreferences()">Clear Preferences</button>
                 
                 <output id="formOutput" style="display: none;"></output>
             </form>
@@ -152,28 +152,12 @@
             </form>
         </section>
 
-        <!-- Video Section -->
-        <section id="video">
-            <h2>Community Event Highlights</h2>
-            <p>Watch our latest community event highlights!</p>
-            
-            <video controls preload="metadata" >
-                <source src="/api/placeholder/video.mp4" type="video/mp4">
-                <source src="/api/placeholder/video.webm" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
-            
-            <div id="videoStatus" class="video-status">
-                Video is ready to play!
-            </div>
-        </section>
-
         <!-- Geolocation Section -->
         <section id="location">
             <h2>Find Nearby Events</h2>
             <p>Discover events happening near your location.</p>
             
-            <button class="btn btn-primary" >Find Nearby Events</button>
+            <button class="btn btn-primary" onclick="findNearbyEvents()">Find Nearby Events</button>
             
             <div id="locationInfo" class="location-info" style="display: none;">
                 <h3>Your Location</h3>
@@ -197,10 +181,10 @@
                     <h3>Follow Us</h3>
                     <p>Stay connected with our community on social media:</p>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="margin: 0.5rem 0;">📘 Facebook: @CommunityEvents</li>
-                        <li style="margin: 0.5rem 0;">🐦 Twitter: @CommunityPortal</li>
-                        <li style="margin: 0.5rem 0;">📷 Instagram: @CommunityLife</li>
-                        <li style="margin: 0.5rem 0;">📧 Newsletter: Sign up for weekly updates</li>
+                        <li style="margin: 0.5rem 0;"> Facebook: @CommunityEvents</li>
+                        <li style="margin: 0.5rem 0;"> Twitter: @CommunityPortal</li>
+                        <li style="margin: 0.5rem 0;"> Instagram: @CommunityLife</li>
+                        <li style="margin: 0.5rem 0;"> Newsletter: Sign up for weekly updates</li>
                     </ul>
                 </div>
             </div>
@@ -209,7 +193,7 @@
 
     <!-- Image Modal -->
     <div id="imageModal" class="modal">
-        <span class="close" >&times;</span>
+        <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
 
@@ -224,5 +208,3 @@
    
 </body>
 </html>
-                        
-                
